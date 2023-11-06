@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Rehawk.Signals
 {
-    public static class Signals
+    public static class Signal
     {
         public delegate void SignalListener();
         public delegate void SignalListener<in TSignal>(TSignal signal);
@@ -12,7 +12,7 @@ namespace Rehawk.Signals
         private static readonly Dictionary<Type, List<Delegate>> listeners = new Dictionary<Type, List<Delegate>>();
         private static readonly Dictionary<Type, List<Delegate>> payloadListeners = new Dictionary<Type, List<Delegate>>();
 
-        static Signals()
+        static Signal()
         {
             listeners.Clear();
             payloadListeners.Clear();
