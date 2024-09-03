@@ -27,7 +27,7 @@ namespace Rehawk.Signals
         {
             if (listeners.TryGetValue(typeof(T), out List<Delegate> resultListenersA))
             {
-                foreach (Delegate listener in resultListenersA)
+                foreach (Delegate listener in resultListenersA.ToArray())
                 {
                     ((SignalListener) listener).Invoke();
                 }
@@ -35,7 +35,7 @@ namespace Rehawk.Signals
             
             if (payloadListeners.TryGetValue(typeof(T), out List<Delegate> resultListenersB))
             {
-                foreach (Delegate listener in resultListenersB)
+                foreach (Delegate listener in resultListenersB.ToArray())
                 {
                     ((SignalListener<T>) listener).Invoke(signal);
                 }
